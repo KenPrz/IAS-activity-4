@@ -53,4 +53,3 @@ elif choice == 2:
     input_file = input("Enter the path to the input file: ")
     output_file = input("Enter the path to save the decrypted file: ")
     decrypt_file(password, input_file, output_file)
-    
