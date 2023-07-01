@@ -19,7 +19,7 @@ Before using this application, make sure you have the following prerequisites:
 
 2. Open a terminal or command prompt and navigate to the directory where the application files are located.
 
-3. Run the `app.py` script using the following command:
+3. Run the `main.py` script using the following command:
 
    ```shell
    python app.py
