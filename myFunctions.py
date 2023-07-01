@@ -7,7 +7,6 @@ def generate_key(password):
     key = hashlib.sha256(password.encode()).digest()
     return base64.urlsafe_b64encode(key)
 
-
 def encrypt_file(password, input_file, output_file):
     key = generate_key(password)
     cipher_suite = Fernet(key)
@@ -20,7 +19,6 @@ def encrypt_file(password, input_file, output_file):
     with open(output_file, 'wb') as file:
         file.write(encrypted_text)
 
-
 def decrypt_file(password, input_file, output_file):
     key = generate_key(password)
     cipher_suite = Fernet(key)
@@ -31,25 +29,8 @@ def decrypt_file(password, input_file, output_file):
     try:
         decrypted_text = cipher_suite.decrypt(encrypted_text)
     except:
-        print("Invalid password. Decryption failed.")
+        print("An error occurred during decryption. The provided password is invalid or the file has been compromised.")
         return
-
     with open(output_file, 'wb') as file:
         file.write(decrypted_text)
         print("File decrypted successfully.")
-
-
-choice = int(input('What would you like to do?\n1. Encrypt a file.\n2. Decrypt a file.\nChoice: '))
-if choice == 1:
-    # Example usage:
-    password = input("Enter the password: ")
-    input_file = input("Enter the path to the input file: ")
-    output_file = input("Enter the path to the output file: ")
-    encrypt_file(password, input_file, output_file)
-    print("File encrypted successfully.")
-elif choice == 2:
-    # To decrypt the file, use the same password:
-    password = input("Enter the password to decrypt the file: ")
-    input_file = input("Enter the path to the input file: ")
-    output_file = input("Enter the path to save the decrypted file: ")
-    decrypt_file(password, input_file, output_file)
